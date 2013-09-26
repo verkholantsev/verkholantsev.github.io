@@ -1,4 +1,5 @@
-verkholantsev.github.io
+verkholantsev.ru
 =======================
 
-verkholantsev.github.io
+Привет! Это репозиторий verkholantsev.ru.
+Сайт переезжает на GitHub + Jekyll
