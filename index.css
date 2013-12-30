@@ -6,6 +6,7 @@
 body {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
+    -webkit-font-smoothing: antialiased;
 	padding: 0;
 	margin: 0;
 }
