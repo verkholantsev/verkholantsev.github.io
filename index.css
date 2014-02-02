@@ -8,7 +8,7 @@ body {
 	font-weight: 400;
 	font-size: 22px;
     -webkit-font-smoothing: antialiased;
-	padding: 0;
+	padding: 1em;
 	margin: 0;
 }
 
@@ -31,9 +31,8 @@ a:visited {
 
 .container {
 	margin: auto;
-	margin-top: 10%;
+	margin-top: 2em;
 	max-width: 800px;
-	padding: 25px;
 }
 
 .about,
@@ -72,8 +71,9 @@ ul.contacts li a {
 	vertical-align: middle;
 }
 
-@media only screen and (max-width: 800px) {
-	ul.contacts li {
-		font-size: .75em;
+@media only screen and (max-width: 500px) {
+	body {
+		font-size: 16px;
+		padding: 0 0.75em 3em;
 	}
 }
