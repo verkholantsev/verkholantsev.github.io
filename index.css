@@ -17,6 +17,17 @@ h1 {
 	padding-top: .5em;
 }
 
+a {
+	color: black;
+	text-decoration: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+a:visited {
+	color: #999999;
+	border-color: #ccc;
+}
+
 .container {
 	white-space: nowrap;
 	margin: auto;
@@ -80,9 +91,4 @@ ul.contacts li img {
 
 ul.contacts li a {
 	vertical-align: middle;
-	color: black;
-}
-
-ul.contacts li a:visited {
-	color: #999999;
 }
