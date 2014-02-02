@@ -68,14 +68,12 @@ ul.contacts li {
 	margin-right: 1em;
 }
 
-ul.contacts li img {
-	width: 24px;
-	height: 24px;
-	vertical-align: middle;
-	position: relative;
-	top: .1em;
-}
-
 ul.contacts li a {
 	vertical-align: middle;
+}
+
+@media only screen and (max-width: 800px) {
+	ul.contacts li {
+		font-size: .75em;
+	}
 }
