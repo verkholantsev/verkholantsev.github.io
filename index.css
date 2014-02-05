@@ -29,6 +29,15 @@ a:visited {
 	border-color: #ccc;
 }
 
+p {
+	margin-bottom: .5em;
+}
+
+sup {
+	vertical-align: top;
+	font-size: .7em;
+}
+
 .container {
 	margin: auto;
 	margin-top: 2em;
