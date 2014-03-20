@@ -32,10 +32,6 @@ a:visited {
 
 p {
 	margin-bottom: .5em;
-	-webkit-hyphens: auto;
-	-moz-hyphens: auto;
-	-ms-hyphens: auto;
-	hyphens: auto;
 }
 
 sup {
@@ -89,5 +85,12 @@ ul.contacts li a {
 	body {
 		font-size: 18px;
 		padding: 0 0.75em 3em;
+	}
+
+	p {
+		-webkit-hyphens: auto;
+		-moz-hyphens: auto;
+		-ms-hyphens: auto;
+		hyphens: auto;
 	}
 }
