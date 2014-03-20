@@ -32,6 +32,10 @@ a:visited {
 
 p {
 	margin-bottom: .5em;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
 }
 
 sup {
