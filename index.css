@@ -103,6 +103,13 @@ ul.contacts li a {
         hyphens: auto;
     }
 
+    code {
+        -webkit-hyphens: none;
+        -moz-hyphens: none;
+        -ms-hyphens: none;
+        hyphens: none;
+    }
+
     .right {
         float: none;
         font-size: small;
