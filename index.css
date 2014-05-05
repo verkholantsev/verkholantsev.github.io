@@ -12,11 +12,10 @@ body {
     margin: 0;
 }
 
-h1 {
-    font-family: 'PT Sans Narrow', sans-serif;
+h1, h2, h3 {
     margin-left: -.05em;
     font-weight: 400;
-    padding-top: .5em;
+    padding-bottom: .25em;
 }
 
 a {
@@ -28,6 +27,11 @@ a {
 a:visited {
     color: #999999;
     border-color: #ccc;
+}
+
+code {
+    font-family: monospace;
+    background-color: #FCFFBB;
 }
 
 p {
@@ -81,6 +85,11 @@ ul.contacts li a {
     vertical-align: middle;
 }
 
+.right {
+    float: right;
+    text-align: right;
+}
+
 @media only screen and (max-width: 500px) {
     body {
         font-size: 18px;
@@ -92,5 +101,10 @@ ul.contacts li a {
         -moz-hyphens: auto;
         -ms-hyphens: auto;
         hyphens: auto;
+    }
+
+    .right {
+        float: none;
+        font-size: small;
     }
 }
