@@ -3,13 +3,17 @@
     padding: 0;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
     font-family: 'PT Serif', serif;
     font-weight: 400;
     font-size: 22px;
     -webkit-font-smoothing: antialiased;
-    padding: 1em;
-    margin: 0;
+    text-align: center;
+    padding: 0 1em;
 }
 
 h1, h2, h3 {
@@ -43,10 +47,19 @@ sup {
     font-size: .7em;
 }
 
+
+body:after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
 .container {
-    margin: auto;
-    margin-top: 2em;
+    text-align: left;
     max-width: 800px;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .about,
@@ -91,9 +104,13 @@ ul.contacts li a {
 }
 
 @media only screen and (max-width: 500px) {
+    html, body {
+        height: auto;
+    }
+
     body {
         font-size: 18px;
-        padding: 0 0.75em 3em;
+        padding: 1em 0.75em 3em;
     }
 
     p {
