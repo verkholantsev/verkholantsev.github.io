@@ -1,0 +1,25 @@
+{
+  "name": "verkholantsev.ru",
+  "version": "0.0.1",
+  "description": "verkholantsev.ru website",
+  "main": "null",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/verkholantsev/verkholantsev.github.io.git"
+  },
+  "author": "Aleksey Verkholantsev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/verkholantsev/verkholantsev.github.io/issues"
+  },
+  "homepage": "https://github.com/verkholantsev/verkholantsev.github.io",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "gulp-jade": "^0.9.0",
+    "gulp": "^3.8.9"
+  }
+}
