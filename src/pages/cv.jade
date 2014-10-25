@@ -1,4 +1,4 @@
-extends ./layout.jade
+extends ../templates/layout.jade
 
 block title
     title Сurriculum vitæ
@@ -23,6 +23,10 @@ block content
             `Node.js` (`Express`)
 
             `TDD/BDD` (`Mocha`, `Must.js`, `Karma`)
+
+            `Debian/Ubuntu`
+
+            `Docker`
 
             ##Experience
 
@@ -57,5 +61,4 @@ block content
 
             English, intermediate.
 
-        .divider
-            span ***
+        include ../templates/divider.jade

@@ -1,4 +1,4 @@
-extends ./layout.jade
+extends ../templates/layout.jade
 
 mixin contact(url, name)
     li
@@ -11,10 +11,9 @@ mixin divider
 block content
     .container
         .avatar
-            img(src="/assets/avatar.jpg" alt="Avatar")
+            img(src="images/avatar.jpg" alt="Avatar")
         .about
             .info
-                h1 Привет
                 p Меня зовут Алексей Верхоланцев, мне 26&nbsp;лет. Сейчас я живу в&nbsp;Москве и занимаюсь разработкой пользовательских интерфейсов в&nbsp;Яндексе. Иногда я перевожу статьи о&nbsp;JavaScript с&nbsp;английского и публикую их на&nbsp;Хабре.
 
                 +divider()

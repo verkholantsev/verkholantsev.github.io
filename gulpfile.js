@@ -1,9 +1,12 @@
 var gulp = require('gulp');
 var jade = require('gulp-jade');
 var stylus = require('gulp-stylus');
+var watch = require('gulp-watch');
+var base64 = require('gulp-base64');
+var imageop = require('gulp-image-optimization');
 
 gulp.task('templates', function () {
-    gulp.src('./src/templates/**/*.jade')
+    gulp.src('./src/pages/**/*.jade')
         .pipe(jade().on('error', function (error) {
             console.log(error.toString());
         }))
@@ -21,11 +24,26 @@ gulp.task('styles', function () {
         }).on('error', function (error) {
             console.log(error.toString());
         }))
+        .pipe(base64({debug: true}))
+        .pipe(gulp.dest('./build/'));
+});
+
+gulp.task('images', function () {
+    gulp.src('./src/**/*.jpg')
+        .pipe(imageop({
+            optimizationLevel: 5,
+            progressive: true,
+            interlaced: true
+        }))
         .pipe(gulp.dest('./build/'));
 });
 
 gulp.task('watch', function () {
-    gulp.watch(['./**/*.jade', './**/*.styl'], function () {
+    watch(['./**/*.jade', './**/*.styl'], function () {
         gulp.run('templates', 'styles');
     });
+});
+
+gulp.task('default', function () {
+    gulp.run('templates', 'styles', 'images');
 });
