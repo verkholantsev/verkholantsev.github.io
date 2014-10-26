@@ -42,16 +42,37 @@ a:visited
     color gray
     border-color #ccc
 
-code
-    font-family monospace
-    background-color #fcffbb
 
+pre, code
+    padding .1em
+    font-family monospace
+    background-color #fdf6e3
+    color #586e75
+
+pre
+    width 100%
+    overflow scroll
+
+    code
+        padding 0
+
+code
     @media small-screen
         hyphens none
 
-p
+    &.lang-bash:before
+        content '$ '
+
+.keyword
+    color #859900
+
+.string
+    color #2aa198
+
+p, ul, pre
     margin-bottom .5em
 
+p
     @media small-screen
         hyphens auto
 
@@ -68,11 +89,13 @@ body:after
 .container
     text-align left
     max-width 800px
+    width 100%
     display inline-block
     vertical-align middle
 
     &.with-padding
         padding-top 2.5em
+        padding-bottom 2.5em
 
 .about, .avatar
     width 100%
