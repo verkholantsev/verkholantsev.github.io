@@ -4,6 +4,7 @@ var stylus = require('gulp-stylus');
 var watch = require('gulp-watch');
 var base64 = require('gulp-base64');
 var imageop = require('gulp-image-optimization');
+var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('templates', function () {
     gulp.src('./src/pages/**/*.jade')
@@ -25,6 +26,7 @@ gulp.task('styles', function () {
             console.log(error.toString());
         }))
         .pipe(base64({debug: true}))
+        .pipe(autoprefixer())
         .pipe(gulp.dest('./build/'));
 });
 
