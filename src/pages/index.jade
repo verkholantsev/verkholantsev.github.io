@@ -1,6 +1,6 @@
 extends ../templates/layout.jade
 
-mixin contact(url, name)
+mixin link(url, name)
     li
         a(href= url)= name
 
@@ -18,14 +18,16 @@ block content
 
                 +divider()
 
-                a(href='/testing-in-different-enviroment-with-docker.html')
-                    Тестирование кода в разных версиях Node.js
+                ul.posts
+                    +link('/testing-in-different-enviroment-with-docker.html', 'Тестирование кода в разных версиях Node.js')
+                    +link('http://habrahabr.ru/post/210330/', 'Отказываемся от коллбэков: Генераторы в ECMAScript 6')
+                    +link('http://habrahabr.ru/post/199456/', 'Bind, Call и Apply в JavaScript')
 
                 +divider()
 
                 ul.contacts
-                    +contact('https://github.com/verkholantsev', 'Гитхаб')
-                    +contact('http://habrahabr.ru/users/verkholantsev', 'Хабрахабр')
-                    +contact('http://www.linkedin.com/profile/view?id=229106429', 'Линкдин')
-                    +contact('http://vk.com/verkholantsev', 'Контакт')
-                    +contact('mailto:poshli.pismo@gmail.com', 'Почта')
+                    +link('https://github.com/verkholantsev', 'Гитхаб')
+                    +link('http://habrahabr.ru/users/verkholantsev', 'Хабрахабр')
+                    +link('http://www.linkedin.com/profile/view?id=229106429', 'Линкдин')
+                    +link('http://vk.com/verkholantsev', 'Контакт')
+                    +link('mailto:poshli.pismo@gmail.com', 'Почта')

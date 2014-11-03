@@ -36,7 +36,7 @@ h1, h2, h3
 a
     color black
     text-decoration none
-    border-bottom 1px solid rgba(0, 0, 0, .5)
+    border-bottom 1px solid #aeaeae
 
 a:visited
     color gray
@@ -69,7 +69,7 @@ code
 .string
     color #2aa198
 
-p, ul, pre
+p, ul, ol, pre
     margin-bottom .5em
 
 p
@@ -116,13 +116,29 @@ avatar-size = 200px
     text-align center
     margin 1.5em 0 1em
 
+ul
+    li
+        list-style none
+
+        &:before
+            content '—'
+            margin-right .25em
+
+ol
+    li
+        @media small-screen
+            margin-left 1.5em
+
 ul.contacts
     text-align center
 
     li
-        list-style none
         display inline-block
+        margin-left 0
         margin-right 1em
+
+        &:before
+            content ''
 
         a
             vertical-align middle
