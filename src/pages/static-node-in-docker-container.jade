@@ -1,0 +1,120 @@
+extends ../templates/post.jade
+
+block post
+    :markdown
+        #Минимальный Docker образ с Node.js
+
+        ##Задача
+
+        Собрать минимально весящий Docker образ с Node.js.
+
+        ##С чего начать?
+
+        Начать нам придется с пустого докерного образа. Если обратиться к документации Докера, можно найти статью о создании такого: [docs.docker.com/articles/baseimages](https://docs.docker.com/articles/baseimages/).
+
+        Пустой образ уже есть в репозитории [registry.hub.docker.com/_/scratch](https://registry.hub.docker.com/_/scratch/), собрать самому его можно так:
+
+        ```shell
+        # Создаем пустой tarfile и отдаем его докерному демону
+        \$ tar cv --files-from /dev/null | docker import - scratch
+        ```
+
+        ##Собираем Node.js
+
+        Докерный контейнер работает с изолированной файловой системой. Так как мы хотим получить образ минимального размера, внутри него не будет никаких файлов, кроме скомпилированной Node.js.
+
+        Запустить внутри пустого контейнера Node.js, собранный обычным образом, у нас не получится, потому что в таком случае бинарнику понадобятся динамические библиотеки, которых не будет внутри контейнера.
+
+        Список таких библиотек можно получить с помощью ldd:
+
+        ```
+        \$ ldd /usr/bin/node
+            linux-vdso.so.1 =>  (0x00007fff8aea0000)
+            libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007f97aaf49000)
+            libcares.so.2 => /usr/lib/x86_64-linux-gnu/libcares.so.2 (0x00007f97aad38000)
+            libv8.so.3.14.5 => /usr/lib/libv8.so.3.14.5 (0x00007f97aa72d000)
+            libssl.so.1.0.0 => /lib/x86_64-linux-gnu/libssl.so.1.0.0 (0x00007f97aa4cf000)
+            libcrypto.so.1.0.0 => /lib/x86_64-linux-gnu/libcrypto.so.1.0.0 (0x00007f97aa0f5000)
+            libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007f97a9ef0000)
+            librt.so.1 => /lib/x86_64-linux-gnu/librt.so.1 (0x00007f97a9ce8000)
+            libstdc++.so.6 => /usr/lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f97a99e4000)
+            libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f97a97c5000)
+            libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007f97a93ff000)
+            libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f97a90f9000)
+            libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f97a8ee2000)
+            /lib64/ld-linux-x86-64.so.2 (0x00007f97ab16b000)
+        ```
+
+        Собрать статически слинкованную Node.js можно с помощью флага `--fully-static`.
+
+        ```shell
+        # Поставим пакет, необходимый для сборки
+        \$ sudo apt-get install build-essential
+
+        # Расчекаутим исходники
+        \$ git clone https://github.com/joyent/node.git
+        \$ git checkout v0.11.14
+
+        # Соберем Node.js
+        \$ cd node
+        \$ ./configure --prefix ~/build --fully-static
+        \$ make
+        \$ make install
+        ```
+
+        Проверяем, что мы получили статически слинкованную Node.js.
+
+        ```shell
+        \$ ldd ~/build/bin/node
+        not a dynamic executable
+        ```
+
+        ##Собираем докерный образ с Node.js приложение
+
+        Напишем небольшой веб-сервер.
+
+        ```javascript
+        // index.js
+        var http = require('http');
+
+        http.createServer(function (req, res) {
+            res.end('Hello world\n');
+        }).listen(8080);
+        ```
+
+        Для сборки докерного образа нам понадобится `Dockerfile`.
+
+
+        ```
+        # Dockerfile
+        FROM scratch
+
+        ADD ~/build /
+        ADD index.js /app/index.js
+
+        CMD ["/bin/node", "/app/index.js"]
+        ```
+
+        Собираем докерный образ.
+
+        ```shell
+        \$ docker build -t small-node .
+        ```
+
+        Запускаем докерный контейнер.
+
+        ```shell
+        \$ docker run -d -p 8080:8080 small-node
+        ```
+
+        Проверяем.
+
+        ```
+        \$ curl localhost:8080
+        Hello world
+        ```
+
+        ##Итого
+
+        В общем случае Docker образы достаточно тяжелы, потому что тянут за собой целую OC. Например, образ с Ubuntu и Node.js весит &gt; 700 Mb.
+        У нас же получился образ с простейшим веб-сервером размером всего 21.19 Mb.
