@@ -1,104 +1,15 @@
-normal-weight = 400
-font-size = 22px
-gray = #999
-small-screen = "only screen and (max-width: 500px)"
-
-*
-    margin 0
-    padding 0
+@require 'constants.styl'
+@import 'common.styl'
+@import 'divider.styl'
+@import 'container.styl'
+@import 'header.styl'
+@import 'footer.styl'
 
 html, body
     height 100%
 
     @media small-screen
         height auto
-
-fonts()
-    font-family 'PT Serif', serif
-    font-weight normal-weight
-    font-size font-size
-    -webkit-font-smoothing antialiased
-
-
-body
-    fonts()
-    text-align center
-    padding 0 1em
-
-    @media small-screen
-        font-size (font-size - 4)
-        padding 1em .75em 3em
-
-h1, h2, h3
-    font-weight normal-weight
-    padding-bottom .25em
-
-a
-    color black
-    text-decoration none
-    border-bottom 1px solid #aeaeae
-
-a:visited
-    color gray
-    border-color #ccc
-
-
-pre, code
-    padding .1em
-    font-size 18px
-    font-family "Lucida Console", Monaco, monospace
-    background-color #fdf6e3
-    color #586e75
-
-pre
-    padding .5em
-    overflow scroll
-
-    code
-        white-space pre
-        padding 0
-
-code
-    white-space nowrap
-    @media small-screen
-        hyphens none
-
-    &.lang-bash:before
-        content '$ '
-
-.keyword
-    color #859900
-
-.string
-    color #2aa198
-
-p, ul, ol, pre
-    margin-bottom .5em
-
-p
-    @media small-screen
-        hyphens auto
-
-sup
-    vertical-align top
-    font-size .7em
-
-body:after
-    content ''
-    display inline-block
-    vertical-align middle
-    height 100%
-
-.container
-    text-align left
-    max-width 800px
-    width 100%
-    display inline-block
-    vertical-align middle
-
-    &.with-padding
-        padding-top 2.5em
-        padding-bottom 2.5em
 
 .about, .avatar
     width 100%
@@ -113,24 +24,6 @@ avatar-size = 200px
     border-radius avatar-size
     max-width (avatar-size / 2)
     max-height (avatar-size / 2)
-
-.divider
-    color gray
-    text-align center
-    margin 1.5em 0 1em
-
-ul
-    li
-        list-style none
-
-        &:before
-            content '—'
-            margin-right .25em
-
-ol
-    li
-        @media small-screen
-            margin-left 1.5em
 
 ul.contacts
     text-align center

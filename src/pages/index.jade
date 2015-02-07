@@ -9,26 +9,27 @@ mixin divider
         span ***
 
 block content
-    .container
-        .avatar
-            img(src="images/avatar.jpg" alt="Avatar")
-        .about
-            .info
-                p Меня зовут Алексей Верхоланцев, мне 26&nbsp;лет. Сейчас я живу в&nbsp;Москве и занимаюсь разработкой пользовательских интерфейсов в&nbsp;Яндексе. Иногда я перевожу статьи о&nbsp;JavaScript с&nbsp;английского и публикую их на&nbsp;Хабре.
+    .header
+        .header__content
+            .avatar
+                img(src="images/avatar.jpg" alt="Avatar")
+            .about
+                .info
+                    p Меня зовут Алексей Верхоланцев, мне 26&nbsp;лет. Сейчас я живу в&nbsp;Москве и занимаюсь разработкой пользовательских интерфейсов в&nbsp;Яндексе.
+    .footer
+        .footer__content
+            +divider()
+            ul.posts
+                +link('/static-node-in-docker-container.html', 'Минимальный Docker образ с Node.js')
+                +link('/testing-in-different-enviroment-with-docker.html', 'Тестирование кода в разных версиях Node.js')
+                +link('http://habrahabr.ru/post/210330/', 'Отказываемся от коллбэков: Генераторы в ECMAScript 6')
+                +link('http://habrahabr.ru/post/199456/', 'Bind, Call и Apply в JavaScript')
 
-                +divider()
+            +divider()
 
-                ul.posts
-                    +link('/static-node-in-docker-container.html', 'Минимальный Docker образ с Node.js')
-                    +link('/testing-in-different-enviroment-with-docker.html', 'Тестирование кода в разных версиях Node.js')
-                    +link('http://habrahabr.ru/post/210330/', 'Отказываемся от коллбэков: Генераторы в ECMAScript 6')
-                    +link('http://habrahabr.ru/post/199456/', 'Bind, Call и Apply в JavaScript')
-
-                +divider()
-
-                ul.contacts
-                    +link('https://github.com/verkholantsev', 'Гитхаб')
-                    +link('http://habrahabr.ru/users/verkholantsev', 'Хабрахабр')
-                    +link('http://www.linkedin.com/profile/view?id=229106429', 'Линкдин')
-                    +link('http://vk.com/verkholantsev', 'Контакт')
-                    +link('mailto:poshli.pismo@gmail.com', 'Почта')
+            ul.contacts
+                +link('https://github.com/verkholantsev', 'Гитхаб')
+                +link('http://habrahabr.ru/users/verkholantsev', 'Хабрахабр')
+                +link('http://www.linkedin.com/profile/view?id=229106429', 'Линкдин')
+                +link('http://vk.com/verkholantsev', 'Контакт')
+                +link('mailto:poshli.pismo@gmail.com', 'Почта')
