@@ -21,9 +21,14 @@ avatar-size = 200px
 
 .avatar img
     width 100%
-    border-radius avatar-size
-    max-width (avatar-size / 2)
-    max-height (avatar-size / 2)
+    border-radius (avatar-size / 2)
+    max-width avatar-size
+    max-height avatar-size
+
+    @media small-screen
+        border-radius (avatar-size / 4)
+        max-width (avatar-size / 2)
+        max-height (avatar-size / 2)
 
 ul.contacts
     text-align center
