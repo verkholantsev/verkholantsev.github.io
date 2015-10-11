@@ -4,10 +4,6 @@ mixin link(url, name)
     li
         a(href= url)= name
 
-mixin divider
-    .divider
-        span ***
-
 block content
     .header
         .header__content
@@ -18,15 +14,6 @@ block content
                     p My name is Aleksey Verkholantsev, I'm JavaScript developer at Yandex, Moscow.
     .footer
         .footer__content
-            h3 Posts (in Russian)
-            ul.posts
-                +link('/static-node-in-docker-container.html', 'The smallest Docker image with Node.js')
-                +link('/testing-in-different-enviroment-with-docker.html', 'Testing code in different versions of Node.js')
-                +link('http://habrahabr.ru/post/210330/', 'Hanging up on Callbacks: Generators in ECMAScript 6 (translation)')
-                +link('http://habrahabr.ru/post/199456/', 'Bind, Call and Apply in JavaScript (translation)')
-
-            +divider()
-
             ul.contacts
                 +link('https://github.com/verkholantsev', 'Github')
                 +link('http://habrahabr.ru/users/verkholantsev', 'habrahabr.ru')
